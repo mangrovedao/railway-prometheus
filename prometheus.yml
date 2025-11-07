@@ -4,24 +4,30 @@ global:
   # Attach these labels to any time series or alerts when communicating with
   # external systems (federation, remote storage, Alertmanager).
   external_labels:
-    monitor: 'railway-prom'
+    monitor: 'indexers-prom'
 
 # A scrape configuration containing exactly one endpoint to scrape:
 # Here it's Prometheus itself.
-scrape_configs:
-  # The job name is added as a label `job=<job_name>` to any timeseries scraped from this config.
-  - job_name: 'prometheus'
-
-    # Override the global default and scrape targets from this job every 5 seconds.
-    scrape_interval: 5s
-
-    static_configs:
-      - targets: ['localhost:9090']
-  
-  - job_name: 'demo_application'
+scrape_configs:  
+  - job_name: 'sei_indexer'
     scrape_interval: 5s
     static_configs:
-      - targets: ['demo.do.prometheus.io:9090']
+      - targets: ['sei-indexer-copy.railway.internal']
+
+  - job_name: 'sei_indexer_api'
+    scrape_interval: 5s
+    static_configs:
+      - targets: ['mgv-data.railway.internal']
+
+  - job_name: 'base_indexer'
+    scrape_interval: 5s
+    static_configs:
+      - targets: ['base-indexer.railway.internal']
+
+  - job_name: 'arbitrum_indexer'
+    scrape_interval: 5s
+    static_configs:
+      - targets: ['mgv-data-9b9cb9b4.railway.internal']
 
   # - job_name: 'postgres'
   #   scrape_interval: 5s
