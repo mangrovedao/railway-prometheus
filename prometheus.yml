@@ -12,22 +12,22 @@ scrape_configs:
   - job_name: 'sei_indexer'
     scrape_interval: 5s
     static_configs:
-      - targets: ['sei-indexer-copy.railway.internal']
+      - targets: ['sei-indexer-copy.railway.internal:8080']
 
   - job_name: 'sei_indexer_api'
     scrape_interval: 5s
     static_configs:
-      - targets: ['mgv-data.railway.internal']
+      - targets: ['mgv-data.railway.internal:8080']
 
   - job_name: 'base_indexer'
     scrape_interval: 5s
     static_configs:
-      - targets: ['base-indexer.railway.internal']
+      - targets: ['base-indexer.railway.internal:8080']
 
   - job_name: 'arbitrum_indexer'
     scrape_interval: 5s
     static_configs:
-      - targets: ['mgv-data-9b9cb9b4.railway.internal']
+      - targets: ['mgv-data-9b9cb9b4.railway.internal:8080']
 
   # - job_name: 'postgres'
   #   scrape_interval: 5s
